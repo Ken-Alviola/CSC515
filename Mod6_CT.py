@@ -6,7 +6,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 
-image_list = ['4.jpg','1.jpg','10.jpg',]
+image_list = ['indoor.jpg','outdoor.jpg','closeup.jpg',]
 
 
 for image in image_list:
