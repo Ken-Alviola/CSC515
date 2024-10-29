@@ -49,7 +49,8 @@ for img in images:
 for i, detected_img in enumerate(detected_images):
     cv2.imshow(f"Detected License Plate Image {i+1}", detected_img)
     cv2.waitKey(0)
-
+    
+cv2.destroyAllWindows()
 # Display cropped plate regions (optional)
 for i, plate in enumerate(all_cropped_plates):
     if plate is not None:
@@ -106,11 +107,13 @@ for i, plate_img in enumerate(all_cropped_plates):
         # Perform OCR using Keras-OCR pipeline
         prediction_groups = pipeline.recognize([plate_img_rgb])
         
+        print()
         # Print detected text
         print(f"License Plate Text for Plate {i+1} ({operation}):")
         for text, box in prediction_groups[0]:
             print(f"Detected text: {text}")
-        
+            
+        print()
         # Display the plate image with applied morphological operation (optional)
         cv2.imshow(f"License Plate {i+1} - {operation}", processed_img)
         cv2.waitKey(0)
