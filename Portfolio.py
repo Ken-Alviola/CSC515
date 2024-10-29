@@ -89,6 +89,14 @@ for i, plate_img in enumerate(all_cropped_plates):
             processed_img = cv2.morphologyEx(plate_img, cv2.MORPH_ERODE, kernel)
             processed_img = cv2.medianBlur(processed_img,5)
             operation = "Erode and Blur"
+        elif i == 3:
+            processed_img = plate_img
+            #Create the sharpening kernel
+            kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]]) 
+            # Sharpen the image 
+            processed_img = cv2.filter2D(processed_img, -1, kernel) 
+            processed_img = cv2.medianBlur(processed_img,3)
+            operation = "Sharpen then Blur"
         else:
             processed_img = plate_img  # If more images, no change
 
